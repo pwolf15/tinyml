@@ -28,6 +28,7 @@ bool initialized = false;
 std::string str(16, '-');
 int i = 0;
 char target = '+';
+int dir = 1;
 
 // Animates a dot across the screen to represent the current x and y values
 void HandleOutput(tflite::ErrorReporter* error_reporter, float x_value,
@@ -36,7 +37,7 @@ void HandleOutput(tflite::ErrorReporter* error_reporter, float x_value,
   if (!initialized) {
     // Set the LED pin to output
     pinMode(led, OUTPUT);
-    str[16] = '\0';
+    str[64] = '\0';
     initialized = true;
   }
 
@@ -50,14 +51,18 @@ void HandleOutput(tflite::ErrorReporter* error_reporter, float x_value,
 
   // Log the current brightness value for display in the Arduino plotter
 
-  if (i >= str.size())
+  if (i >= str.size() || i < 0)
   {
-    i = 0;
     target = target == '+' ? '-' : '+';
+    dir = -dir;
   }
 
-  str[i] = target;
-  i++;
+  i += dir;
+
+  if (i >= 0 && i < str.size())
+  {
+    str[i] = target;
+  }
 
   TF_LITE_REPORT_ERROR(error_reporter, "%s\n", str.c_str());
 }
