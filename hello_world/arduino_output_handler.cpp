@@ -21,7 +21,7 @@ limitations under the License.
 #include "constants.h"
 
 // The pin of the Arduino's built-in LED
-int led = LED_BUILTIN;
+int led = D2; //LED_BUILTIN;
 
 // Track whether the function has run at least once
 bool initialized = false;
