@@ -85,3 +85,43 @@ choosing right arena size requires trial and error
 * ErrorReporter outputs data via Aruino's serial interface
 * Needed to install board support package
 * Also needed to add my user to the dialout group
+* Change animation: added back and forth animation by incrementing number and outputting symbol (+ or -) in serpentine fashion. Each line is 16 characters
+* Change what you're driving: drove GPIO pin #2 (connected up to speaker and LED)
+
+# Chapter 7
+- Wake-word detection: words which trigger audio stream to speech detection model
+- Wake-word detection is a part of cascading architecture, where a tiny, efficient model "wakes up" a larger, more resource-hungry model.
+- 18 KB model classifies spoken audio
+- model trained to recognize "yes" and "no"
+- application will indicate that it has detected a word by lighting an LED or displaying data on a screen
+
+## General TinyML Application architecture
+1. Obtains an input
+2. Preprocesses the input to extract features suitable to feed into a model
+3. Runs inference on the processed input
+4. Post processes the model's output to make sense of it
+5. Uses the resulting information to make things happen.
+
+## Wake-word application architecture complexiities
+1. Audio data as input which requires heavy processing before input.
+2. Model is a classfiier, outputting class probabilities. We'll need to parse and make sense of output.
+3. Designed to perform inference continually, on live data. We'll need to write code to make sense of a stream of inferences.
+4. Model is larger and more complex. We'll push the hardware to limits of its capabilities.
+
+Speech Commands dataset
+- yes, no, unknown, silent
+- 65000 second long utterances of 30 short words
+- model takes sepctrograms, 2D arrays that are made up of slices of frequency information, each taken from a different time window.
+- convolutional neural network: works well with multidimensional tnesors in which information is contained in the relationships between groups of adjacent values
+- images,
+- Goal: display spectrogram
+- components
+* main loop
+- audio provider: audio data capture via microphone
+- feature provider: converts raw audio data into spectrogram format
+- TF Lite interpreter
+- model: data array
+- command recognizer: aggregate reults and determines on average whether a known word is heard
+- command responder: uses device's output capabilities to let user know whether command was heard
+
+Each spectrogram == 2D array, with 40 columns and 49 rows, where each rows represents a 30-ms sample of audio split into 43 frequency buckets. 30-ms audio into fast Fourier trnasform; analyzes frequency distribution of audio in the sample and creates an array of 256 frequency buckets, each with a value from 0 to 255. These are averaged together into groups of six, leaving us with 43 buckets. (micro_features_generator)
