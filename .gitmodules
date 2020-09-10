@@ -1,0 +1,6 @@
+[submodule "CH341SER"]
+	path = CH341SER
+	url = https://github.com/juliagoda/CH341SER.git
+[submodule "tensorflow"]
+	path = tensorflow
+	url = git@github.com:pwolf15/tensorflow.git
