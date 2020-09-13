@@ -4,3 +4,6 @@
 [submodule "tensorflow"]
 	path = tensorflow
 	url = git@github.com:pwolf15/tensorflow.git
+[submodule "tract"]
+	path = tract
+	url = git@github.com:pwolf15/tract.git

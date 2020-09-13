@@ -125,3 +125,5 @@ Speech Commands dataset
 - command responder: uses device's output capabilities to let user know whether command was heard
 
 Each spectrogram == 2D array, with 40 columns and 49 rows, where each rows represents a 30-ms sample of audio split into 43 frequency buckets. 30-ms audio into fast Fourier trnasform; analyzes frequency distribution of audio in the sample and creates an array of 256 frequency buckets, each with a value from 0 to 255. These are averaged together into groups of six, leaving us with 43 buckets. (micro_features_generator)
+
+https://learn.sparkfun.com/tutorials/using-sparkfun-edge-board-with-ambiq-apollo3-sdk/all
