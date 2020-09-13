@@ -118,6 +118,7 @@ Speech Commands dataset
 - components
 * main loop
 - audio provider: audio data capture via microphone
+- remember you wan to minimize the number of ops you import to your device
 - feature provider: converts raw audio data into spectrogram format
 - TF Lite interpreter
 - model: data array
@@ -126,4 +127,10 @@ Speech Commands dataset
 
 Each spectrogram == 2D array, with 40 columns and 49 rows, where each rows represents a 30-ms sample of audio split into 43 frequency buckets. 30-ms audio into fast Fourier trnasform; analyzes frequency distribution of audio in the sample and creates an array of 256 frequency buckets, each with a value from 0 to 255. These are averaged together into groups of six, leaving us with 43 buckets. (micro_features_generator)
 
+Command recognizer uses multiple inferences to determine whether command inputs cross a given threshold.
+
+Sparkfun Edge Setup:
 https://learn.sparkfun.com/tutorials/using-sparkfun-edge-board-with-ambiq-apollo3-sdk/all
+
+
+Can I use wake word detection to hook up with Pynq and determine what I'm saying?
