@@ -134,3 +134,18 @@ https://learn.sparkfun.com/tutorials/using-sparkfun-edge-board-with-ambiq-apollo
 
 
 Can I use wake word detection to hook up with Pynq and determine what I'm saying?
+
+- https://stackoverflow.com/a/57435184
+-> sparkfun edge wakeword generally having problems? Why?
+
+## Training the wake word model
+
+* Configuring parameters
+* Installing the correct dependencies
+* Monitoring training using something called TensorBoard
+* Running the training script
+* Converting the training output into a model we can use
+
+* Training usually 5-10x faster with the GPU
+
+* cross_entropy: models loss, which quantifies how far from the correct values the models predictions are.
