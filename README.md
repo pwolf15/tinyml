@@ -149,3 +149,13 @@ Can I use wake word detection to hook up with Pynq and determine what I'm saying
 * Training usually 5-10x faster with the GPU
 
 * cross_entropy: models loss, which quantifies how far from the correct values the models predictions are.
+* checkpoint files: file written by training script which contains the weights and biases produced during traning process.
+* Tensorflow model contains two things
+1. weights and biases from training
+2. a graph of operations that combine the model's input with these weights and baises to produce to model's input
+
+https://colab.research.google.com/github/tensorflow/tensorflow/blob/master/tensorflow/lite/micro/examples/micro_speech/train/train_micro_speech_model.ipynb#scrollTo=-RHFQVLJnQTa
+
+creating the model file => freezing: create a static representation of the graph with weights frozen into it
+Still a TensorFlow model to TensorFlow lite model conversion process; converter called toco
+=> Doesn't apply to example above, skips to the C file generation step
