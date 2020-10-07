@@ -159,3 +159,16 @@ https://colab.research.google.com/github/tensorflow/tensorflow/blob/master/tenso
 creating the model file => freezing: create a static representation of the graph with weights frozen into it
 Still a TensorFlow model to TensorFlow lite model conversion process; converter called toco
 => Doesn't apply to example above, skips to the C file generation step
+
+Feature generation is main step for pre-processing input. The reasons for doing so is that the resulting data is easier to classify/differentiate. Additionally, the data size is much smaller (1960 vs 16000 values). Most models operate on processed data, but some models like DeepMind's WaveNet operate on raw data.
+
+How does feature generation work?
+- mel-frequency cepstral coefficients (MFCC)
+- different approach here; used by google, but not published
+1. Fast Fourier Transform for a given time slice (in our case 30 ms); data filtered with Hann window. Hann window reduces influence of samples at either end of the window.
+2. 256 frqeuency buckets
+3. Scale down by non-linear Mel function so low frequencies have more resolution
+
+See Trainable Frontend for Robust and Far-Field Keyword sSpotting from Yuxuan Wang et al
+There is a step in background noise reduction. Even and odd buckets have different coeffcients.
+Per-channel amplitude normalization occurs after this to boost the signal based on the running average noise.
