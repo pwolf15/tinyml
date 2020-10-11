@@ -172,3 +172,17 @@ How does feature generation work?
 See Trainable Frontend for Robust and Far-Field Keyword sSpotting from Yuxuan Wang et al
 There is a step in background noise reduction. Even and odd buckets have different coeffcients.
 Per-channel amplitude normalization occurs after this to boost the signal based on the running average noise.
+
+Convolutional layers are used for spotting 2D patterns in input images.
+Think of convolution as moving a series of rectangular filters across the iamge, with the result at each pixel for each filter corresponding to how similar the filter is to the that patch in th eimage.
+Fully connected layer: weight for every value in the input tensor. Result is indication of how closely the input matches the weights, after comparing every value. Each class has its own weights, so there's an ideal pattern for "silence", "unknown", "yes", and "no"
+Softmax layer: effectively helps increase the difference between the highest output and its nearest competitors
+There is a ReLU activation function after eah layer, in addition to biases. Again, ReLU helps results converge much moreq uickly.
+Model runs 10 to 15 seconds (empirical choice), and then the score is averaged across time. 
+
+More sophisticated speech recognition algorithms accept a stream of input and use recurrent neural networks instead of single-layer convlutional neural networks as done here. Having streaming baked into the model means that you don't need to do the postprocessing done here.
+
+## Training your own model
+
+* need to gather thousands of audio samples in most cases
+* Open Speech recording app was used for Speech Commands dataset
