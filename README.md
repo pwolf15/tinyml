@@ -1,3 +1,9 @@
+# TODO
+
+* Training the on/off model
+* Gathering your own data
+* Continue the visual wake word detection example
+
 # Chapter 4: Hello World
 * Goal: use Sine wave to power on/off LED
 
@@ -186,3 +192,16 @@ More sophisticated speech recognition algorithms accept a stream of input and us
 
 * need to gather thousands of audio samples in most cases
 * Open Speech recording app was used for Speech Commands dataset
+
+# Chapter 9: Person Detection
+
+* simpler than audio
+* uses CNN since they work well with adjacent data, multidimensional tensors
+* model uses raw pixel data, unlike audio (need to translate raw data into spectrogram)
+* Uses Visual Wake Words dataset
+* 250 KB model
+* 96 x 96 x 1 grayscale images as input
+* state-of-the-art image classifiers often work with 320 x 320
+* MobileNet architecture: well-known and battle-tested architecture for image classification on devices like mobile phones
+* inference takes longer due to size of input => one inference per several seconds, vs. multiple inferences per second
+* Keep in mind an output tensor might have more dimensions than expected; this can be due to the architecture or due to implementation. 
