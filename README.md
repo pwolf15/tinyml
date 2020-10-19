@@ -2,7 +2,7 @@
 
 * Training the on/off model
 * Gathering your own data
-* Continue the visual wake word detection example
+* Deploy visual wake word to Arduino and Sparkfun Edge
 
 # Chapter 4: Hello World
 * Goal: use Sine wave to power on/off LED
