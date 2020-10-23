@@ -205,3 +205,7 @@ More sophisticated speech recognition algorithms accept a stream of input and us
 * MobileNet architecture: well-known and battle-tested architecture for image classification on devices like mobile phones
 * inference takes longer due to size of input => one inference per several seconds, vs. multiple inferences per second
 * Keep in mind an output tensor might have more dimensions than expected; this can be due to the architecture or due to implementation. 
+
+## Chapter 10: Training Wake Word Model
+
+* Training this model takes several days, 100s GBs of storage
