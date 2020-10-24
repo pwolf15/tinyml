@@ -209,3 +209,4 @@ More sophisticated speech recognition algorithms accept a stream of input and us
 ## Chapter 10: Training Wake Word Model
 
 * Training this model takes several days, 100s GBs of storage
+* TF Slim (older Tensorflow training interface)
